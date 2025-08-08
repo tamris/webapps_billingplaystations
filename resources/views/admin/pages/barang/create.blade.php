@@ -7,6 +7,7 @@
     <h1 class="h3 mb-4 text-gray-800">Tambah Barang Baru</h1>
     <div class="card shadow mb-4">
         <div class="card-body">
+            {{-- Form ini akan mengirim data ke method 'store' di controller --}}
             <form action="{{ route('barang.store') }}" method="POST">
                 @csrf
                 <div class="form-group">

@@ -36,11 +36,13 @@
                                     <td>{{ $user->email }}</td>
                                     <td>
                                         {{-- Memberi badge agar role terlihat lebih menarik --}}
-                                        @if ($user->role == 'superadmin')
-                                            <span class="badge badge-success">Super Admin</span>
-                                        @else
-                                            <span class="badge badge-info">Admin</span>
-                                        @endif
+                                    @if ($user->role == 'superadmin')
+                                        <span class="badge badge-success">Super Admin</span>
+                                    @elseif ($user->role == 'admin')
+                                        <span class="badge badge-info">Admin</span>
+                                    @else
+                                        <span class="badge badge-warning">User</span>
+                                    @endif
                                     </td>
                                     {{-- Format tanggal agar lebih mudah dibaca --}}
                                     <td>{{ $user->created_at->format('d M Y') }}</td>

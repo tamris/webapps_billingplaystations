@@ -32,9 +32,11 @@
                     <div class="form-group">
                         <label for="role">Role</label>
                         <select class="form-control @error('role') is-invalid @enderror" id="role" name="role" required>
-                            <option value="">Pilih Role...</option>
-                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                            <option value="">Pilih Role</option>
                             <option value="superadmin" {{ old('role') == 'superadmin' ? 'selected' : '' }}>Super Admin</option>
+                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                            <option value="admin" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                            
                         </select>
                         @error('role')
                             <div class="invalid-feedback">{{ $message }}</div>

@@ -53,7 +53,7 @@
                                         
                                         {{-- Social login bisa dihapus jika tidak dipakai --}}
                                         <hr>
-                                        <a href="#" class="btn btn-google btn-user btn-block">
+                                        <a href="{{ route('google.redirect') }}" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Register with Google
                                         </a>
                                         {{-- <a href="#" class="btn btn-facebook btn-user btn-block">...</a> --}}

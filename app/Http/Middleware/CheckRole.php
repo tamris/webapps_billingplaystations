@@ -13,17 +13,26 @@ class CheckRole
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  string  ...$roles  // Menerima parameter role (e.g., 'superadmin', 'admin')
+     * @param  ...$roles  // Menerima role yang diizinkan (misal: 'admin', 'superadmin')
      * @return mixed
      */
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        // Jika user tidak login atau rolenya tidak ada di dalam daftar yang diizinkan
-        if (!Auth::check() || !in_array(Auth::user()->role, $roles)) {
-            // Tampilkan halaman error 403 (Forbidden)
-            abort(403, 'ANDA TIDAK MEMILIKI AKSES.');
+        // 1. Periksa apakah pengguna sudah login
+        if (!Auth::check()) {
+            return redirect('login');
         }
 
-        return $next($request);
+        // 2. Ambil data pengguna yang sedang login
+        $user = Auth::user();
+
+        // 3. Periksa apakah role pengguna ada di dalam daftar role yang diizinkan
+        if (in_array($user->role, $roles)) {
+            // 4. Jika diizinkan, lanjutkan ke halaman yang dituju
+            return $next($request);
+        }
+
+        // 5. Jika tidak diizinkan, tampilkan halaman "403 Forbidden"
+        abort(403, 'ANDA TIDAK MEMILIKI AKSES KE HALAMAN INI.');
     }
 }

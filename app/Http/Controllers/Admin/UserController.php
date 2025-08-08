@@ -37,7 +37,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'role' => ['required', Rule::in(['admin', 'superadmin'])],
+            'role' => ['required', Rule::in(['admin', 'superadmin', 'user'])],
         ]);
 
         User::create([
@@ -73,7 +73,7 @@ class UserController extends Controller
             'role' => [
                 // Field 'role' hanya 'required' JIKA user yg login TIDAK SAMA DENGAN user yg diedit
                 Rule::requiredIf(Auth::id() != $user->id),
-                Rule::in(['admin', 'superadmin'])
+                Rule::in(['admin', 'superadmin', 'user']),
             ],
 
             'password' => 'nullable|string|min:8|confirmed',

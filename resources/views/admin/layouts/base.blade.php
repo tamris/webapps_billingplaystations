@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </li>
-
+            
             <li class="nav-item active">
                 {{-- BENAR --}}
                 <a class="nav-link" href="{{ route('barang.index') }}">

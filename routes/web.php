@@ -1,15 +1,22 @@
 <?php
 
-use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BarangController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 
 
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
 
 Route::middleware(['auth'])->group(function () {
 
@@ -33,6 +40,15 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', UserController::class);
         
     });
+
+});
+
+
+Route::middleware(['auth', 'role:user'])->prefix('user')->group(function () {
+    
+    // Menggunakan controller yang sudah Anda buat
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    // Tambahkan route user lainnya di sini...
 
 });
 

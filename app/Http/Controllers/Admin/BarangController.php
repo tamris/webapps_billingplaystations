@@ -10,7 +10,7 @@ class BarangController extends Controller
 {
     public function index()
     {
-        $barangs = Barang::all(); // Assuming you have a Barang model to fetch data
+        $barangs = Barang::all();
         return view('admin.pages.barang.index', compact('barangs'));
     }
 
@@ -19,9 +19,12 @@ class BarangController extends Controller
         return view('admin.pages.barang.create');
     }
 
-     public function store(Request $request)
+    // ===================================================================
+    // PERUBAHAN HANYA DI SINI
+    // ===================================================================
+    public function store(Request $request)
     {
-        // Validasi input
+        // Validasi input tetap sama
         $request->validate([
             'nama_barang' => 'required|string|max:255',
             'harga' => 'required|integer',
@@ -29,43 +32,43 @@ class BarangController extends Controller
             'deskripsi' => 'nullable|string',
         ]);
 
-        // Simpan data baru ke database
+        // Simpan data baru ke database tetap sama
         Barang::create($request->all());
 
-        // Redirect ke halaman index dengan pesan sukses
-        return redirect()->route('barang.index')
-                         ->with('success', 'Barang berhasil ditambahkan.');
+        // Ganti redirect dengan respon JSON agar bisa dibaca oleh JavaScript
+        return response()->json(['message' => 'Barang berhasil ditambahkan.']);
     }
+    // ===================================================================
+    // METHOD LAINNYA TIDAK PERLU DIUBAH
+    // ===================================================================
 
-        public function edit(Barang $barang)
+    public function edit(Barang $barang)
     {
-        // Menampilkan halaman form edit dengan data barang yang akan diedit
         return view('admin.pages.barang.edit', compact('barang'));
     }
-     public function update(Request $request, Barang $barang)
+
+    public function update(Request $request, Barang $barang)
     {
-        // Validasi input
+        // Validasi input tetap sama
         $request->validate([
             'nama_barang' => 'required|string|max:255',
             'harga' => 'required|integer',
             'stok' => 'required|integer',
             'deskripsi' => 'nullable|string',
         ]);
-        
-        // Update data barang di database
+
+        // Update data barang di database tetap sama
         $barang->update($request->all());
 
-        // Redirect ke halaman index dengan pesan sukses
-        return redirect()->route('barang.index')
-                         ->with('success', 'Barang berhasil diperbarui.');
+        // Ganti redirect dengan respon JSON agar bisa dibaca oleh JavaScript
+        return response()->json(['message' => 'Barang berhasil diperbarui.']);
     }
-      public function destroy(Barang $barang)
+
+    public function destroy(Barang $barang)
     {
-        // Hapus data barang dari database
         $barang->delete();
 
-        // Redirect ke halaman index dengan pesan sukses
         return redirect()->route('barang.index')
-                         ->with('success', 'Barang berhasil dihapus.');
+            ->with('success', 'Barang berhasil dihapus.');
     }
 }
