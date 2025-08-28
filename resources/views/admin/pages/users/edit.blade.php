@@ -34,9 +34,8 @@
                         <label for="role">Role</label>
                         <select class="form-control @error('role') is-invalid @enderror" id="role" name="role" required {{ auth()->user()->id == $user->id ? 'disabled' : '' }}>
                             <option value="">Pilih Role</option>
-                            <option value="superadmin" {{ old('role', $user->role) == 'superadmin' ? 'selected' : '' }}>Super Admin</option>
                             <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
-                            <option value="superadmin" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
+                            <option value="superadmin" {{ old('role', $user->role) == 'operator' ? 'selected' : '' }}>Operator</option>
                         </select>
                         @if(auth()->user()->id == $user->id)
                             <small class="form-text text-muted">Anda tidak dapat mengubah role diri sendiri.</small>

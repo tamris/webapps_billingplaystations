@@ -37,10 +37,8 @@ class AuthController extends Controller
             // ===================================================================
             $user = Auth::user();
 
-            if ($user->role == 'admin' || $user->role == 'superadmin') {
+            if ($user->role == 'admin' || $user->role == 'operator') {
                 return redirect()->route('dashboard');
-            } elseif ($user->role == 'user') {
-                return redirect()->route('user.dashboard');
             }
 
             // Fallback jika role tidak terdefinisi (seharusnya tidak terjadi)

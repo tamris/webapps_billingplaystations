@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -65,12 +65,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>Master Data</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <h6 class="collapse-header">Costum Master Data:</h6>
+                        <a class="collapse-item" href="{{ route('playstations.index') }}">Data playstations</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -123,30 +123,30 @@
                         <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
             
-            <!-- Nav Item - Barang -->
             <li class="nav-item">
                 {{-- BENAR --}}
-               <a class="nav-link" href="{{ route('sessions.index') }}">
+                <a class="nav-link" href="{{ route('sessions.index') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Play Time</span></a>
             </li>
 
-  
-            <li class="nav-item">
+            <li class="nav-item active">
                 {{-- BENAR --}}
-                <a class="nav-link" href="{{ route('reports.revenue') }}">
+                <a class="nav-link" href="{{ route('sessions.index') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Reports</span></a>
+                <span>Play Time</span></a>
             </li>
 
             <!-- Nav Item - Users -->
-            <li class="nav-item active">
+            @if (auth()->user()->role == 'admin')
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('/users') }}">
-                    <i class="fas fa-fw fa-user-friends"></i>
+                    <i class="fas fa-fw fa-chart-area"></i>
                     <span>Users</span></a>
             </li>
+            @endif
 
 
             <!-- Divider -->
@@ -415,7 +415,6 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
@@ -457,4 +456,4 @@
 
 </body>
 
-</html> 
+</html>

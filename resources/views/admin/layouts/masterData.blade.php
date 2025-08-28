@@ -61,16 +61,16 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>Master Data</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <h6 class="collapse-header">Costum Master Data:</h6>
+                        <a class="collapse-item active" href="{{ route('playstations.index') }}">Data playstations</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -123,31 +123,33 @@
                         <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
+            </li> --}}
+
+            <li class="nav-item">
+                    {{-- BENAR --}}
+                <a class="nav-link" href="{{ route('sessions.index') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Play Time</span></a>
             </li>
             
-            <!-- Nav Item - Barang -->
-            <li class="nav-item">
-                {{-- BENAR --}}
-               <a class="nav-link" href="{{ route('sessions.index') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Play Time</span></a>
-            </li>
-
-  
+            <!-- Nav Item - Repors -->
+             @if (auth()->user()->role == 'admin')
             <li class="nav-item">
                 {{-- BENAR --}}
                 <a class="nav-link" href="{{ route('reports.revenue') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Reports</span></a>
             </li>
+            @endif
 
             <!-- Nav Item - Users -->
-            <li class="nav-item active">
+            @if (auth()->user()->role == 'admin')
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('/users') }}">
-                    <i class="fas fa-fw fa-user-friends"></i>
+                    <i class="fas fa-fw fa-chart-area"></i>
                     <span>Users</span></a>
             </li>
-
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

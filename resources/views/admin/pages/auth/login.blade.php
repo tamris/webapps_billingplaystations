@@ -50,22 +50,14 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
-                                        
-                                        {{-- Social login bisa dihapus jika tidak dipakai --}}
-                                        <hr>
-                                        <a href="{{ route('google.redirect') }}" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Register with Google
-                                        </a>
-                                        {{-- <a href="#" class="btn btn-facebook btn-user btn-block">...</a> --}}
                                     </form>
                                     <hr>
-                                    <div class="text-center">
+                                    {{-- <div class="text-center">
                                         <a class="small" href="#">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        {{-- PERUBAHAN 5 (Opsional): Gunakan helper route() --}}
+                                    </div> --}}
+                                    {{-- <div class="text-center">
                                         <a class="small" href="{{ route('register') }}">Create an Account!</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
