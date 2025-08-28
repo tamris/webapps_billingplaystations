@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+@extends('admin.layouts.playTime')
 @section('title','Riwayat Sesi')
 @section('content')
 <div class="container-fluid">

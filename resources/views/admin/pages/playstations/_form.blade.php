@@ -24,7 +24,7 @@
   <div class="col-md-4">
     <label class="form-label">Status</label>
     <select name="status" class="form-select @error('status') is-invalid @enderror">
-      @foreach(['available'=>'Available','in_use'=>'In Use','maintenance'=>'Maintenance'] as $val=>$label)
+      @foreach(['available'=>'Available','maintenance'=>'Maintenance'] as $val=>$label)
         <option value="{{ $val }}" @selected(old('status', $playstation->status ?? 'available')==$val)>
           {{ $label }}
         </option>

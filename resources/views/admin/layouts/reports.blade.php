@@ -70,27 +70,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Costum Master Data:</h6>
-                        <a class="collapse-item" href="{{ route('playstations.index') }}">Data playstations</a>
+                        <a class="collapse-item" href="{{ route('playstations.index') }}">Data Playstations</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
             </li>
@@ -134,9 +115,9 @@
 
             <li class="nav-item active">
                 {{-- BENAR --}}
-                <a class="nav-link" href="{{ route('sessions.index') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Play Time</span></a>
+                <a class="nav-link" href="{{ route('reports.revenue') }}">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span></a>
             </li>
 
             <!-- Nav Item - Users -->

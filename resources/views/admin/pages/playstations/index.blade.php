@@ -1,4 +1,4 @@
-@extends('admin.layouts.masterData')
+@extends('admin.layouts.dataPS')
 @section('content')
 <div class="container">
   <div class="d-flex justify-content-between align-items-center mb-3">
@@ -30,7 +30,8 @@
       <tbody>
         @forelse($ps as $i => $item)
           <tr>
-            <td>{{ $ps->firstItem() + $i }}</td>
+            {{-- pakai $loop->iteration untuk nomor urut --}}
+            <td>{{ $loop->iteration }}</td>
             <td><span class="fw-semibold">{{ $item->code }}</span></td>
             <td>{{ $item->name ?? '-' }}</td>
             <td>Rp {{ number_format($item->price_per_hour,0,',','.') }}</td>
@@ -57,24 +58,26 @@
       </tbody>
     </table>
   </div>
-
-  {{ $ps->links() }}
 </div>
 @endsection
 
 @push('scripts')
 <script>
 $(function () {
-  // (Opsional) Inisialisasi DataTables
   $('#dataTable').DataTable({
-    pageLength: 10,
-    language: { url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/id.json' },
-    columnDefs: [
-      { targets: -1, orderable: false, searchable: false }, // kolom Aksi
-      { targets: 0,  orderable: false, searchable: false }  // kolom No
-    ],
-    order: [[1,'asc']]
-  });
+  pageLength: 10,
+  language: {
+    url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/id.json',
+    info: "_START_ - _END_ / _TOTAL_"
+
+  },
+  columnDefs: [
+    { targets: -1, orderable: false, searchable: false }, // kolom Aksi
+    { targets: 0,  orderable: false, searchable: false }  // kolom No
+  ],
+  order: [[1,'asc']]
+});
+
 
   // Konfirmasi hapus pakai SweetAlert
   $('.form-delete').on('submit', function(e) {
