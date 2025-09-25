@@ -16,23 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
 
-// Route::middleware(['auth'])->group(function () {
-
-//     Route::middleware(['role:admin,operator'])->group(function () {
-
-//         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-//         Route::resource('barang', BarangController::class);
-
-//     });
-
-//     Route::middleware(['role:admin'])->group(function () {
-
-//         Route::resource('users', UserController::class);
-
-//     });
-
-// });
 
 Route::middleware(['auth'])->group(function () {
     // tampilkan list ke semua role (admin & operator)
