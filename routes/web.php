@@ -72,8 +72,8 @@ Route::middleware(['auth', 'role:admin,operator'])->group(function () {
 
 
 // Beri nama 'login' pada route login
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
+Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::post('/', [AuthController::class, 'authenticate'])->name('login.authenticate');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout'); // Tambahan untuk proses logout
 
 // Beri nama 'register' pada route register (INI PERBAIKANNYA)
